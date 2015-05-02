@@ -1,0 +1,19 @@
+Start: Mon, 27 Apr 2015 11:34:02 +1000
+End: Mon, 27 Apr 2015 11:34:02 +1000
+Tasks: Initial commit
+
+Start: Mon, 27 Apr 2015 14:20:00 +1000
+End: Mon, 27 Apr 2015 17:20:19 +1000
+Tasks: I created multtable.php and got the table creation working. I was able to add validation for initialized GET vars
+
+Start: Thu, 30 Apr 2015 12:00:00 +1000
+End: Thu, 30 Apr 2015 14:34:27 +1000
+Tasks: Improved data validation in multtable and nearly complete with loopback
+
+Start: Thu, 30 Apr 2015 10:00:00 -0700
+End: Thu, 30 Apr 2015 14:17:12 -0700
+Tasks: During this time I tidied up loopback to print just the JSON string. I started the login & content pages. I completed the login & validation, redirects to login with necessary session destroy using a logout.php intermediary, and links between content1 and content2. Need to encapuslate content pages with session/redirect to login.
+
+Start: Sat, 2 May 2015 11:15:00 -0700
+End: Sat, 2 May 2015 13:18:40 -0700
+Tasks: multtable validates to pos integers; loopback debugged to work with Post; login, content1, content2 redirects if not logged in, and destroys session with GET at login page (removed logout)
