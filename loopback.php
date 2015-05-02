@@ -7,7 +7,7 @@ echo '<!DOCTYPE html>
 <meta charset="utf-8" />
 <title>PHP loopback</title>
 </head>
-<body>Hello';
+<body>';
 
 class jsonObj {
     function __construct($type){
@@ -39,19 +39,17 @@ class jsonObj {
 }
 
 if(count($_GET) > 0){
-    echo '<p>' . 'GET has variables';
     $getJSON = new jsonObj('GET');
     $getJSON->fillParams();
+    $jsonString = json_encode($getJSON);
+    echo $jsonString;
 } else if (count($_POST) > 0) {
-    echo '<p>' . 'POST has variables';
     $postJSON = new jsonObj('POST');
+    $postJSON->fillParams();
+    $jsonString = json_encode($postJSON);
+    echo $jsonString;
 } else {
     echo '<p>' . 'GET and POST have no variables';
 }
 
-$jsonString = json_encode($getJSON);
-echo $jsonString;
-
-echo '</body>
-</html>';
-?>
+echo '</body></html>';

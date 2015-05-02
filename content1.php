@@ -3,7 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 //session related variable and function calls
-//reference from OSU's lectures and lecture code
+//referenced from OSU's lectures and lecture code
+//also functions and code related to building
+//links sourced from OSU's lectures and lecture cod
+//on sessions
 
 echo '<!DOCTYPE html>
 <html>
@@ -28,7 +31,7 @@ function loginLink() {
 }
 
 function displayContent() {
-    $logoutString = redirect() . "/logout.php";
+    $logoutString = redirect() . "/login.php?action=logout";
     echo '<p>' . "Hi $_SESSION[username], you have visited this page $_SESSION[visits] times. Click ";
     echo "<a href=$logoutString>here</a> to logout";
     echo '<p><a href="content2.php">Content 2</a><br>';
@@ -39,7 +42,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     if (isset($_POST['username'])) {
         //if the POST username is set
         if ($_POST['username'] == '' || is_null(['username'])) {
-            //if POST user name is null or empty string show return link
+            //if POST user name is null or empty string display link to login
             loginLink();
         } else {
             //otherwise it is not an empty string, set the username
@@ -48,12 +51,21 @@ if (session_status() == PHP_SESSION_ACTIVE) {
                 //if # of visits doesn't exist initialize it
                 $_SESSION['visits'] = 0;
             }
+            if(!isset($_SESSION['logCheck'])){
+                $_SESSION['logCheck'] = 12345;
+            }
             //increment the visits
             displayContent();
         }
-    } elseif (isset($_SESSION['username'])){
+    } elseif (isset($_SESSION['username']) && $_SESSION['logCheck'] = 12345){
         //if the post has not been set, and the session username is set
         displayContent();
+    } else {
+        //redirect
+        //redirect file code from OSU sessions lecture
+        $backToLogin = redirect() . "/login.php";
+        header("Location: {$backToLogin}", true);
+        die();
     }
 }
 

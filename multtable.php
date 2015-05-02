@@ -9,32 +9,45 @@ echo '<!DOCTYPE html>
 </head>
 <body>Multiplication table';
 $list = array('min_multiplicand', 'max_multiplicand', 'min_multiplier', 'max_multiplier');
-$test = true;
+$test = true;   //boolean to store if all tests pass
+$testArray = array();   //boolean array to store invidual tests passing
 
 foreach($list as $key => $value){
+    $testArray[$value] = true;
     //test if set
     if(array_key_exists($value, $_GET)) {
         //array key exists
         if ($_GET[$value] == '') {
             //array key isn't set
             echo '<p>' . 'Missing parameter ' . $value;
-            $test = false;
+            $testArray[$value] = false;
         }
     } else {
         //array key does not exist
         echo '<p>' . 'Missing parameter ' . $value;
-        $test = false;
+        $testArray[$value] = false;
     }
     //test if an integer (if set)
     //method used from http://stackoverflow.com/questions/3377537/checking-if-a-string-contains-an-integer
     //if wanting to exclude 1.0, used '==='
-    if ($test) {
+    if ($testArray[$value]) {
         if ((string)(int)$_GET[$value] == $_GET[$value]) {
             $multList[$value] = (int)$_GET[$value];
         } else {
             echo '<p>' . $value . ' must be an integer';
-            $test = false;
+            $testArray[$value] = false;
         }
+    }
+    //test if greater than 0
+    if($testArray[$value]) {
+        if ($_GET[$value] < 0) {
+            echo '<p>' . $value . ' must be greater than 0';
+            $testArray[$value] = false;
+        }
+    }
+    //check if all tests are true.
+    if(!$testArray[$value]){
+        $test = false;
     }
 }
 
