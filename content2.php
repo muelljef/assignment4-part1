@@ -2,19 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
-echo '<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Content 2</title>
-</head>
-<body>';
-
-if(isset($_SESSION['logCheck']) && $_SESSION['logCheck'] == 12345) {
-    echo '<p>Hello and welcome to the content 2 page.
-    <p><a href="content1.php">Content 1</a>
-    </body></html>';
-} else {
+if(!(isset($_SESSION['logCheck']) && $_SESSION['logCheck'] == 12345)){
     //redirect file code from OSU sessions lecture
     $filePath = explode('/', $_SERVER['PHP_SELF'], -1);
     $filePath = implode('/',$filePath);
@@ -22,3 +10,13 @@ if(isset($_SESSION['logCheck']) && $_SESSION['logCheck'] == 12345) {
     header("Location: {$redirect}/login.php", true);
     die();
 }
+echo '<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Content 2</title>
+</head>
+<body>
+<p>Hello and welcome to the content 2 page.
+<p><a href="content1.php">Content 1</a>
+</body></html>';
