@@ -8,7 +8,7 @@ echo '<!DOCTYPE html>
 <title>PHP Multiplication Table</title>
 </head>
 <body>Multiplication table';
-$list = array('min_multiplicand', 'max_multiplicand', 'min_multiplier', 'max_multiplier');
+$list = array('min-multiplicand', 'max-multiplicand', 'min-multiplier', 'max-multiplier');
 $test = true;   //boolean to store if all tests pass
 $testArray = array();   //boolean array to store invidual tests passing
 
@@ -41,7 +41,7 @@ foreach($list as $key => $value){
     //test if greater than 0
     if($testArray[$value]) {
         if ($_GET[$value] < 0) {
-            echo '<p>' . $value . ' must be greater than 0';
+            echo '<p>' . $value . ' must be greater or equal to 0';
             $testArray[$value] = false;
         }
     }
@@ -53,11 +53,11 @@ foreach($list as $key => $value){
 
 //test mins are less than max
 if ($test) {
-    if ($multList['min_multiplicand'] > $multList['max_multiplicand']) {
+    if ($multList['min-multiplicand'] > $multList['max-multiplicand']) {
         $test = false;
         echo '<p>' . 'Minimum multiplicand is larger than maximum';
     }
-    if ($multList['min_multiplier'] > $multList['max_multiplier']) {
+    if ($multList['min-multiplier'] > $multList['max-multiplier']) {
         $test = false;
         echo '<p>' . 'Minimum multiplier is larger than maximum';
     }
@@ -70,13 +70,13 @@ if($test) {
         <table border="1">
         <thead>
         <tr><th>';
-    for ($i = $multList['min_multiplier']; $i <= $multList['max_multiplier']; $i++) {
+    for ($i = $multList['min-multiplier']; $i <= $multList['max-multiplier']; $i++) {
         echo '<th>' . $i;
     }
 
-    for ($i = $multList['min_multiplicand']; $i <= $multList['max_multiplicand']; $i++) {
+    for ($i = $multList['min-multiplicand']; $i <= $multList['max-multiplicand']; $i++) {
         echo '<tr><th>' . $i;
-        for ($j = $multList['min_multiplier']; $j <= $multList['max_multiplier']; $j++) {
+        for ($j = $multList['min-multiplier']; $j <= $multList['max-multiplier']; $j++) {
             echo '<td>' . $i * $j;
         }
     }
